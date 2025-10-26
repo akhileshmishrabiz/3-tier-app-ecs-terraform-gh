@@ -25,9 +25,9 @@ locals {
         aws_cloudwatch_log_group_name = "/aws/ecs/${var.environment}-flask"
         database_address              = var.environment == "dev" ? aws_db_instance.postgres[0].address : aws_rds_cluster.postgres[0].endpoint
         database_name                 = var.environment == "dev" ? aws_db_instance.postgres[0].db_name : aws_rds_cluster.postgres[0].database_name
-        # postgres_username             = var.environment == "dev" ? aws_db_instance.postgres[0].username : aws_rds_cluster.postgres[0].master_username
-        # postgres_password             = random_password.dbs_random_string.result
-        # database_url                  = var.environment == "dev" ? "postgres://${aws_db_instance.postgres[0].username}:${random_password.dbs_random_string.result}@${aws_db_instance.postgres[0].address}:${aws_db_instance.postgres[0].port}/${aws_db_instance.postgres[0].db_name}" : "postgres://${aws_rds_cluster.postgres[0].master_username}:${random_password.dbs_random_string.result}@${aws_rds_cluster.postgres[0].endpoint}:${aws_rds_cluster.postgres[0].port}/${aws_rds_cluster.postgres[0].database_name}"
+        postgres_username             = var.environment == "dev" ? aws_db_instance.postgres[0].username : aws_rds_cluster.postgres[0].master_username
+        postgres_password             = random_password.dbs_random_string.result
+        database_url                  = var.environment == "dev" ? "postgres://${aws_db_instance.postgres[0].username}:${random_password.dbs_random_string.result}@${aws_db_instance.postgres[0].address}:${aws_db_instance.postgres[0].port}/${aws_db_instance.postgres[0].db_name}" : "postgres://${aws_rds_cluster.postgres[0].master_username}:${random_password.dbs_random_string.result}@${aws_rds_cluster.postgres[0].endpoint}:${aws_rds_cluster.postgres[0].port}/${aws_rds_cluster.postgres[0].database_name}"
         environment                   = var.environment
       }
     },
