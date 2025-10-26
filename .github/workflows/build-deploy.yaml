@@ -1,4 +1,4 @@
-name: "Dev App Build, Test and Release"
+name: "Build and Deploy to ECS"
 
 on:
   workflow_dispatch:
