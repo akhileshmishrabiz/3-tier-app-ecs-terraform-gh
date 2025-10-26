@@ -1,3 +1,4 @@
+
 data "template_file" "services" {
   for_each = { for service in local.ecs_services : service.name => service }
   template = file(each.value.template_file)
